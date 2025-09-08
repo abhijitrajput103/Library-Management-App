@@ -1,13 +1,14 @@
 import express from "express";
 import { loginController, signupController, authCheck } from "../controllers/authController.js";
 import protect from "../middleware/authMiddleware.js";
+import { signupValidation, loginValidation } from "../validators/authValidators.js";
 
 const router = express.Router();
 // Signup
-router.post("/signup", signupController);
+router.post("/signup", signupValidation, signupController);
 
 // Login
-router.post("/login", loginController);
+router.post("/login", loginValidation, loginController);
 
 // Logout
 router.post("/logout", protect(), async (req, res) => {

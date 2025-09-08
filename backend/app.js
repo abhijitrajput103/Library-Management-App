@@ -5,6 +5,7 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import userRoutes from './routes/userRoutes.js';
+import bookRoutes from './routes/bookRoutes.js';
 import { connectDB } from "./lib/db.js";
 dotenv.config();
 
@@ -20,6 +21,7 @@ const __dirname = dirname(__filename);
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/books", bookRoutes);
 
 // Serve frontend static files in production
 if (process.env.NODE_ENV === 'production') {
